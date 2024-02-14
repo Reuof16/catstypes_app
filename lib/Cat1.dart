@@ -27,14 +27,17 @@ class _Cat1State extends State<Cat1> {
             children: [
               Stack(
                 children:[
-                  Container(
-                    height: 550,
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage(catList[widget.index].imgPath),
-                          fit: BoxFit.cover,
-                        )
+                  Hero(
+                    tag: catList[widget.index].catName,
+                    child: Container(
+                      height: 550,
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage(catList[widget.index].imgPath),
+                            fit: BoxFit.cover,
+                          )
+                      ),
                     ),
                   ),
                   Padding(
@@ -82,12 +85,12 @@ class _Cat1State extends State<Cat1> {
                         onPressed: ()
                         {
                           setState(() {
-                                catList[widget.index].isFavorite= ! catList[widget.index].isFavorite;
+                            catList[widget.index].isFavorite= ! catList[widget.index].isFavorite;
                           });
 
                         },
                         icon: Icon(
-                            catList[widget.index].isFavorite == true ? Icons.favorite:Icons.favorite_border,
+                          catList[widget.index].isFavorite == true ? Icons.favorite:Icons.favorite_border,
                           color: Colors.red,
                           size: 25,
                         )),
@@ -99,9 +102,9 @@ class _Cat1State extends State<Cat1> {
                     right:250 ,
                     top: 10
                 ),
-                child:Text(
+                child: Text(
                   catList[widget.index].Des1,
-                    style: TextStyle(
+                  style: TextStyle(
                     fontSize: 20,
                     fontFamily: "Inter",
                     color: Colors.grey,

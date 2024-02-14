@@ -62,10 +62,10 @@ class _CatsTypesState extends State<CatsTypes> {
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(
-                        top: 75,
-                        left: 20,
-                        right: 20,
-                        bottom: 10
+                          top: 75,
+                          left: 20,
+                          right: 20,
+                          bottom: 10
                       ),
                       child: Row(
                         children: [
@@ -127,6 +127,8 @@ class _CatsTypesState extends State<CatsTypes> {
                             Navigator.push(context, MaterialPageRoute(builder: (context)=>Cat1(index)));
                           },
                           child: Container(
+                            height: 150,
+                            width: 150,
                             margin: EdgeInsets.symmetric(vertical: 8,horizontal: 15),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.all(Radius.circular(20)),
@@ -143,19 +145,27 @@ class _CatsTypesState extends State<CatsTypes> {
                               mainAxisAlignment:MainAxisAlignment.spaceEvenly,
                               children: [
                                 Container(
-                                  height: 170,
-                                  width: 170,
-                                  child: Image(image: AssetImage(catList[index].imgPath,),
-                                    fit: BoxFit.fitWidth,
-                                    width: 100,
+                                  height: 150,
+                                  width: 150,
+                                  child: Hero(
+                                    tag: catList[index].catName,
+                                    child: Image(image: AssetImage(catList[index].imgPath,),
+                                      fit: BoxFit.fitWidth,
+                                      width: 100,
+                                    ),
                                   ),
                                 ),
-                                Text(catList[index].catName,
-                                  style: TextStyle(
-                                    fontSize: 19,
-                                    fontFamily: "Kalam",
-                                    color: Color(0xff3559E0),
-                                    fontWeight: FontWeight.w700,
+                                Expanded(
+                                  child: Text(
+                                    catList[index].catName,
+                                    maxLines: 1,
+                                    style: TextStyle(
+                                        fontSize: 19,
+                                        fontFamily: "Kalam",
+                                        color: Color(0xff3559E0),
+                                        fontWeight: FontWeight.w700,
+                                        overflow: TextOverflow.ellipsis
+                                    ),
                                   ),
                                 ),
                               ],
